@@ -14,8 +14,21 @@ public class Main {
         int[] zeroNum = {0, 1, 0, 3, 12, 5, 0};
         List<String> names = Arrays.asList("John", "Mary", "Peter", "Alice");
         int[] toReverse = {1, 2, 3, 4, 5, 6, 7};
+        int[] toSort = {11, 2, 3, 4, 7, 6, 10, 5, 5};
 
-        System.out.println(isPalindromeWord("topot"));
+        System.out.println(Arrays.toString(toSort));
+        bubbleSort(toSort);
+        System.out.println(Arrays.toString(toSort));
+    }
+
+    public static void bubbleSort(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j+1]) {
+                    swap(array, j, j+1);
+                }
+            }
+        }
     }
 
     public static boolean isPalindromeWord(String word) {
@@ -50,12 +63,6 @@ public class Main {
         }
     }
 
-    private static void swap(int[] array, int a, int b) {
-        int save = array[a];
-        array[a] = array[b];
-        array[b] = save;
-    }
-
     public static int diagonalNumberSum(int[][] matrix) {
         int sum = 0;
         for (int i = 0; i < matrix.length; i++) {
@@ -67,5 +74,11 @@ public class Main {
             }
         }
         return sum;
+    }
+
+    private static void swap(int[] array, int index1, int index2) {
+        int save = array[index1];
+        array[index1] = array[index2];
+        array[index2] = save;
     }
 }
