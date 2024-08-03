@@ -2,6 +2,7 @@ package org.example;
 
 
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,16 +12,25 @@ public class Main {
         int[][] matrix3 = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}};
 
         int[] zeroNum = {0, 1, 0, 3, 12, 5, 0};
-        zeroNumbersToEndSwap(zeroNum);
-        System.out.println(Arrays.toString(zeroNum));
 
+        List<String> names = Arrays.asList("John", "Mary", "Peter", "Alice");
+
+
+
+    }
+
+    public static List<String> sortStringList(List<String> names) {
+        return names.stream()
+                .map(s -> s.substring(1))
+                .sorted((o1, o2) -> o2.compareToIgnoreCase(o1))
+                .toList();
     }
 
     public static void zeroNumbersToEndSwap(int[] array) {
         for (int j = 0; j < array.length; j++) {
-            for (int i = 0; i < array.length-1-j; i++) {
-                if (array[i] == 0 && array[i+1] !=0) {
-                    swap(array, i, i+1);
+            for (int i = 0; i < array.length - 1 - j; i++) {
+                if (array[i] == 0 && array[i + 1] != 0) {
+                    swap(array, i, i + 1);
                 }
             }
         }
