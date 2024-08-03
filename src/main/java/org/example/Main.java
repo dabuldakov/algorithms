@@ -12,11 +12,17 @@ public class Main {
         int[][] matrix3 = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}};
 
         int[] zeroNum = {0, 1, 0, 3, 12, 5, 0};
-
         List<String> names = Arrays.asList("John", "Mary", "Peter", "Alice");
+        int[] toReverse = {1, 2, 3, 4, 5, 6, 7};
 
+        reverseArray(toReverse);
+        System.out.println(Arrays.toString(toReverse));
+    }
 
-
+    public static void reverseArray(int[] array) {
+        for (int i = 0; i < array.length / 2; i++) {
+            swap(array, i, array.length - i - 1);
+        }
     }
 
     public static List<String> sortStringList(List<String> names) {
