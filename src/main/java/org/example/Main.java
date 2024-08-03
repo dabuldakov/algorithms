@@ -15,8 +15,16 @@ public class Main {
         List<String> names = Arrays.asList("John", "Mary", "Peter", "Alice");
         int[] toReverse = {1, 2, 3, 4, 5, 6, 7};
 
-        reverseArray(toReverse);
-        System.out.println(Arrays.toString(toReverse));
+        System.out.println(isPalindromeWord("topot"));
+    }
+
+    public static boolean isPalindromeWord(String word) {
+        char[] charArray = word.toCharArray();
+        for (int i = 0; i < charArray.length / 2; i++) {
+            if (charArray[i] != charArray[charArray.length - i -1])
+                return false;
+        }
+        return true;
     }
 
     public static void reverseArray(int[] array) {
