@@ -7,25 +7,31 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        int[][] matrix2 = {{1, 3, 6}, {2, 6, 7}, {5, 7, 3}};
-        int[][] matrix3 = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}};
+//        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+//        int[][] matrix2 = {{1, 3, 6}, {2, 6, 7}, {5, 7, 3}};
+//        int[][] matrix3 = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}};
+//
+//        int[] zeroNum = {0, 1, 0, 3, 12, 5, 0};
+//        List<String> names = Arrays.asList("John", "Mary", "Peter", "Alice");
+//        int[] toReverse = {1, 2, 3, 4, 5, 6, 7};
+//        int[] toSort = {11, 2, 3, 4, 7, 6, 10, 5, 5};
 
-        int[] zeroNum = {0, 1, 0, 3, 12, 5, 0};
-        List<String> names = Arrays.asList("John", "Mary", "Peter", "Alice");
-        int[] toReverse = {1, 2, 3, 4, 5, 6, 7};
-        int[] toSort = {11, 2, 3, 4, 7, 6, 10, 5, 5};
+//        System.out.println(Arrays.toString(toSort));
+//        bubbleSort(toSort);
+//        System.out.println(Arrays.toString(toSort));
 
-        System.out.println(Arrays.toString(toSort));
-        bubbleSort(toSort);
-        System.out.println(Arrays.toString(toSort));
+        var testIterator = new MyIterator(new String[]{"qwe", "asd", "zxc"});
+
+        for (String item : testIterator) {
+            System.out.println(item);
+        }
     }
 
     public static void bubbleSort(int[] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] > array[j+1]) {
-                    swap(array, j, j+1);
+                if (array[j] > array[j + 1]) {
+                    swap(array, j, j + 1);
                 }
             }
         }
@@ -34,7 +40,7 @@ public class Main {
     public static boolean isPalindromeWord(String word) {
         char[] charArray = word.toCharArray();
         for (int i = 0; i < charArray.length / 2; i++) {
-            if (charArray[i] != charArray[charArray.length - i -1])
+            if (charArray[i] != charArray[charArray.length - i - 1])
                 return false;
         }
         return true;

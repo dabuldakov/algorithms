@@ -170,7 +170,10 @@ public class Codewars {
     private static void help(int s) {
         String temp = String.valueOf(s);
         if (temp.length() > 1) {
-            result = temp.chars().mapToObj(x -> Character.getNumericValue((char) x)).reduce((x, y) -> x + y).orElse(0);
+            result = temp.chars()
+                    .mapToObj(x -> Character.getNumericValue((char) x))
+                    .reduce(Integer::sum)
+                    .orElse(0);
             help(result);
         }
     }
