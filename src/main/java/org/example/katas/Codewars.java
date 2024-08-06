@@ -4,6 +4,7 @@ package org.example.katas;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Stack;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -15,7 +16,6 @@ public class Codewars {
     private static int count = 0;
 
     public static void main(String[] args) {
-
         //System.out.println(getCount("asdfqwertyui"));
         //System.out.println(accum("RqaEzty"));
         //System.out.println(accum3("RqaEzty"));
@@ -34,11 +34,42 @@ public class Codewars {
         //System.out.println(spinWords("Hello wonderful world it is for fun"));
         //String[] s = {"Alex", "Jacob", "Mark", "Max"};
         //System.out.println(whoLikesIt(s));
-//        System.out.println(duplicateCount("Indivisibilities"));
-//        System.out.println(persistence(999));
+        //System.out.println(duplicateCount("Indivisibilities"));
+        //System.out.println(persistence(999));
         //System.out.println(persistence1(4));
+        //System.out.println(howMuchUmbrella(Weather.OVERCAST, Weather.RAINY, Weather.CLEAR, Weather.THUNDERSTORMS));
+        System.out.println(isAllBracketsValid("[{()[]}]()[][[[]]]"));
+    }
 
-        System.out.println(howMuchUmbrella(Weather.OVERCAST, Weather.RAINY, Weather.CLEAR, Weather.THUNDERSTORMS));
+    private static boolean isAllBracketsValid(String s) {
+        if (s.length() % 2 != 0) {
+            return false;
+        }
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (isLeftBracket(c)) {
+                stack.push(c);
+            } else {
+                if (!stack.isEmpty() && isLeftBrother(stack.peek(), c)) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private static boolean isLeftBracket(char bracket) {
+        return bracket == '(' ||
+                bracket == '{' ||
+                bracket == '[';
+    }
+
+    private static boolean isLeftBrother(char stackBracket, char currentBracket) {
+        return stackBracket == '(' && currentBracket == ')' ||
+                stackBracket == '{' && currentBracket == '}' ||
+                stackBracket == '[' && currentBracket == ']';
     }
 
     private static int howMuchUmbrella(Weather... forecast) {
