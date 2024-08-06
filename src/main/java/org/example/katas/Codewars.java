@@ -36,8 +36,42 @@ public class Codewars {
         //System.out.println(persistence1(4));
         //System.out.println(howMuchUmbrella(Weather.OVERCAST, Weather.RAINY, Weather.CLEAR, Weather.THUNDERSTORMS));
         //System.out.println(isAllBracketsValid("[{()[]}]()[][[[]]]"));
-        Integer[] array = new Integer[]{1, 2, 3, 4, 5, 5, 6, 7};
-        System.out.println(reverseLinkedList(new LinkedList<>(Arrays.asList(array))));
+//        Integer[] array = new Integer[]{1, 2, 3, 4, 5, 5, 6, 7};
+//        System.out.println(reverseLinkedList(new LinkedList<>(Arrays.asList(array))));
+        System.out.println(maxSubExclusiveString("qwwwasd"));
+
+    }
+
+    private static String maxSubExclusiveString(String s) {
+        if (s.length() < 2) {
+            return s;
+        }
+
+        int leftCursor = 0;
+        int maxLeftCursor = 0;
+        int maxRightCursor = 0;
+        char[] charArray = s.toCharArray();
+        for (int i = 1; i < s.length(); i++) {
+            if (isUniquePreviousSub(charArray, leftCursor, i)) {
+
+                if ((i - leftCursor) > (maxRightCursor - maxLeftCursor)) {
+                    maxLeftCursor = leftCursor;
+                    maxRightCursor = i;
+                }
+            } else {
+                leftCursor = i;
+            }
+        }
+        return s.substring(maxLeftCursor, maxRightCursor+1);
+    }
+
+    private static boolean isUniquePreviousSub(char[] array, int indexLeft, int checkIndex) {
+        for (int i = indexLeft; i <= checkIndex-1; i++) {
+            if (array[checkIndex] == array[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static List<Integer> reverseLinkedList(LinkedList<Integer> list) {
