@@ -1,10 +1,7 @@
 package org.example.katas;
 //import com.ibm.jvm.format.Util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Stack;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -38,7 +35,15 @@ public class Codewars {
         //System.out.println(persistence(999));
         //System.out.println(persistence1(4));
         //System.out.println(howMuchUmbrella(Weather.OVERCAST, Weather.RAINY, Weather.CLEAR, Weather.THUNDERSTORMS));
-        System.out.println(isAllBracketsValid("[{()[]}]()[][[[]]]"));
+        //System.out.println(isAllBracketsValid("[{()[]}]()[][[[]]]"));
+        Integer[] array = new Integer[]{1, 2, 3, 4, 5, 5, 6, 7};
+        System.out.println(reverseLinkedList(new LinkedList<>(Arrays.asList(array))));
+    }
+
+    private static List<Integer> reverseLinkedList(LinkedList<Integer> list) {
+        var result = new LinkedList<Integer>();
+        list.forEach(result::addFirst);
+        return result;
     }
 
     private static boolean isAllBracketsValid(String s) {
