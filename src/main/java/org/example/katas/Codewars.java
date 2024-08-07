@@ -38,8 +38,37 @@ public class Codewars {
         //System.out.println(isAllBracketsValid("[{()[]}]()[][[[]]]"));
 //        Integer[] array = new Integer[]{1, 2, 3, 4, 5, 5, 6, 7};
 //        System.out.println(reverseLinkedList(new LinkedList<>(Arrays.asList(array))));
-        System.out.println(maxSubExclusiveString("qwwwasd"));
+        //System.out.println(maxSubExclusiveString("qwwwasd"));
 
+        int[] array = new int[]{1, 1, 3, 2, 2, 5, 6, 6, 7, 6};
+        System.out.println(findFirstUniqueNumber(array));
+
+    }
+
+
+    private static Integer findFirstUniqueNumber(int[] array) {
+
+        LinkedHashMap<Integer, Integer> unique = new LinkedHashMap<>();
+
+        for (int j : array) {
+            Integer value = unique.get(j);
+            if (value != null) {
+                ++value;
+                unique.put(j, value);
+            } else {
+                unique.put(j, 1);
+            }
+        }
+
+        Integer result = null;
+        for (Map.Entry<Integer, Integer> entry : unique.entrySet()) {
+            if (entry.getValue().equals(1)) {
+                result = entry.getKey();
+                break;
+            }
+        }
+
+        return result;
     }
 
     private static String maxSubExclusiveString(String s) {
