@@ -1,7 +1,5 @@
 package org.example.leetCode;
 
-import java.util.Arrays;
-
 public class LeetCode {
 
     public static void main(String[] args) {
@@ -13,11 +11,46 @@ public class LeetCode {
 //        addZeroToZero(array);
 //        System.out.println(Arrays.toString(array));
 
-        int[] array1 = {3, 5, 6, 0, 0, 0};
-        int[] array2 = {1, 3, 5};
-        mergeTwoArray(array1, array2, 3, 3);
-        System.out.println(Arrays.toString(array1));
+//        int[] array1 = {3, 5, 6, 0, 0, 0};
+//        int[] array2 = {1, 3, 5};
+//        mergeTwoArray(array1, array2, 3, 3);
+//        System.out.println(Arrays.toString(array1));
+//
+//        Билет с 6 значным номером считается счастливым,
+//        если сумма 3 первых цифр равна сумме последних 3 цифр.
+//                Посчитать, сколько существует счастливых 6-значных билетов.
+//
+//
+//                Вывод результата: количество 6-значных счастливых билетов.
+
+
+        System.out.println(countHappyTickets());
+
     }
+
+    private static int countHappyTickets() {
+        int count = 0;
+
+        for (int i = 1; i < 1000000; i++) {
+            String string = "00000" + i;
+            if (sumNumbers(string, string.length() - 6, string.length() - 3)
+                    == sumNumbers(string, string.length() - 3, string.length())) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    private static int sumNumbers(String ticket, int indexFrom, int indexTo) {
+        String stringTicket = ticket.substring(indexFrom, indexTo);
+        int sum = 0;
+        for (int i = 0; i < stringTicket.length(); i++) {
+            sum = sum + stringTicket.charAt(i);
+        }
+        return sum;
+    }
+
 
     private static void mergeTwoArray(int[] nums1, int[] nums2, int m, int n) {
         if (n == 0) {
