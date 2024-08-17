@@ -14,9 +14,9 @@ public class LeetCode {
 //        System.out.println(Arrays.toString(array));
 //        System.out.println(countHappyTickets());
 
-        int[] array1 = {3, 5, 6, 0, 0, 0};
-        int[] array2 = {1, 3, 5};
-        mergeTwoArray(array1, array2, 3, 3);
+        int[] array1 = {4, 0, 0, 0, 0, 0};
+        int[] array2 = {1,2,3,5,6};
+        mergeTwoArray(array1, array2, 1, 5);
         System.out.println(Arrays.toString(array1));
 
 
@@ -31,6 +31,7 @@ public class LeetCode {
             for (int i = 0; i < nums1.length; i++) {
                 nums1[i] = nums2[i];
             }
+            return;
         }
 
         int[] toArray = new int[nums1.length];
@@ -42,9 +43,11 @@ public class LeetCode {
         for (int i = 0; i < minLength; i++) {
             if (nums1[i - offsetNums1] < nums2[i - offsetNums2]) {
                 toArray[lastIndexToArray] = nums1[i - offsetNums1];
+                lastIndexToArray++;
                 offsetNums2++;
             } else if (nums1[i - offsetNums1] > nums2[i - offsetNums2]) {
                 toArray[lastIndexToArray] = nums2[i - offsetNums2];
+                lastIndexToArray++;
                 offsetNums1++;
             } else {
                 toArray[lastIndexToArray] = nums1[i - offsetNums1];
@@ -54,13 +57,13 @@ public class LeetCode {
             }
         }
 
-        for (int i = 1; i <= offsetNums1; i++) {
-            toArray[lastIndexToArray] = nums1[minLength - 1 - i];
+        for (int i = offsetNums1; i > 0; i--) {
+            toArray[lastIndexToArray] = nums1[minLength - i];
             lastIndexToArray++;
         }
 
-        for (int i = 1; i <= offsetNums2; i++) {
-            toArray[lastIndexToArray] = nums2[minLength - 1 - i];
+        for (int i = offsetNums2; i > 0; i--) {
+            toArray[lastIndexToArray] = nums2[minLength - i];
             lastIndexToArray++;
         }
 
