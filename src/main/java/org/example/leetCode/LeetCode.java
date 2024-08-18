@@ -14,56 +14,34 @@ public class LeetCode {
 //        System.out.println(Arrays.toString(array));
 //        System.out.println(countHappyTickets());
 
-        int[] array1 = {4, 0, 0, 0, 0, 0};
-        int[] array2 = {1,2,3,5,6};
-        mergeTwoArray(array1, array2, 1, 5);
+        int[] array1 = {-1, 0, 0, 3, 3, 3, 0, 0, 0};
+        int[] array2 = {1, 2, 2};
+        mergeTwoArray(array1, array2, 6, 3);
         System.out.println(Arrays.toString(array1));
+
+        int[] array3 = {1, 2, 3, 0, 0, 0};
+        int[] array4 = {2, 5, 6};
+        mergeTwoArray(array3, array4, 3, 3);
+        System.out.println(Arrays.toString(array3));
 
 
     }
 
     private static void mergeTwoArray(int[] nums1, int[] nums2, int m, int n) {
-        if (n == 0) {
-            return;
-        }
-
-        if (nums1[0] == 0) {
-            for (int i = 0; i < nums1.length; i++) {
-                nums1[i] = nums2[i];
-            }
-            return;
-        }
-
         int[] toArray = new int[nums1.length];
         int offsetNums1 = 0;
         int offsetNums2 = 0;
         int lastIndexToArray = 0;
-        int minLength = m < n ? m : n;
 
-        for (int i = 0; i < minLength; i++) {
-            if (nums1[i - offsetNums1] < nums2[i - offsetNums2]) {
+        for (int i = 0; i < m + n; i++) {
+            if (i - offsetNums2 == nums2.length ||
+                    (nums1[i - offsetNums1] <= nums2[i - offsetNums2] && i - offsetNums1 != m)) {
                 toArray[lastIndexToArray] = nums1[i - offsetNums1];
-                lastIndexToArray++;
                 offsetNums2++;
-            } else if (nums1[i - offsetNums1] > nums2[i - offsetNums2]) {
-                toArray[lastIndexToArray] = nums2[i - offsetNums2];
-                lastIndexToArray++;
-                offsetNums1++;
             } else {
-                toArray[lastIndexToArray] = nums1[i - offsetNums1];
-                lastIndexToArray++;
                 toArray[lastIndexToArray] = nums2[i - offsetNums2];
-                lastIndexToArray++;
+                offsetNums1++;
             }
-        }
-
-        for (int i = offsetNums1; i > 0; i--) {
-            toArray[lastIndexToArray] = nums1[minLength - i];
-            lastIndexToArray++;
-        }
-
-        for (int i = offsetNums2; i > 0; i--) {
-            toArray[lastIndexToArray] = nums2[minLength - i];
             lastIndexToArray++;
         }
 
