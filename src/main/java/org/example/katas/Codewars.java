@@ -40,9 +40,28 @@ public class Codewars {
 //        System.out.println(reverseLinkedList(new LinkedList<>(Arrays.asList(array))));
         //System.out.println(maxSubExclusiveString("qwwwasd"));
 
-        int[] array = new int[]{1, 1, 3, 2, 2, 5, 6, 6, 7, 6};
-        System.out.println(findFirstUniqueNumber(array));
+        //int[] array = new int[]{1, 1, 3, 2, 2, 5, 6, 6, 7, 6};
+        //System.out.println(findFirstUniqueNumber(array));
 
+        int[] array = new int[]{1,2,2,3,3,3,4,3,3,3,2,2,1};
+
+        System.out.println(findOddCountFromArray(array));
+    }
+
+    private static Integer findOddCountFromArray(int[] array1) {
+
+        Map<Integer, Integer> resultMap = new HashMap<>();
+
+        for (int j : array1) {
+            resultMap.merge(j, 1, Integer::sum);
+        }
+
+        for (var elem: resultMap.entrySet()) {
+            if (elem.getValue() % 2 != 0)
+                return elem.getKey();
+        }
+
+        throw new NoSuchElementException("No odd found");
     }
 
 
